@@ -10,32 +10,17 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#06090F;
-    --surface:#0E1521;
-    --surface-2:#131C2B;
-    --line:#1E2A3D;
-    --blue:#2E9BFF;
-    --blue-deep:#1366E6;
-    --red:#FF4D5E;
-    --green:#27C26E;
-    --text:#EAF1FA;
-    --muted:#8593A6;
-    --radius:20px;
+    --bg:#06090F; --surface:#0E1521; --surface-2:#131C2B; --line:#1E2A3D;
+    --blue:#2E9BFF; --red:#FF4D5E; --green:#27C26E;
+    --text:#EAF1FA; --muted:#8593A6; --radius:20px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{
-    font-family:"IBM Plex Sans Thai",system-ui,-apple-system,sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
+  body{font-family:"IBM Plex Sans Thai",system-ui,-apple-system,sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
-
-  /* ambient glow */
   .glow{position:fixed;top:-200px;left:50%;transform:translateX(-50%);
     width:680px;height:680px;border-radius:50%;
     background:radial-gradient(circle,rgba(46,155,255,.18),transparent 62%);
@@ -52,7 +37,6 @@
     padding:8px 15px;border-radius:999px;transition:.2s}
   .nav-cta:hover{color:var(--text);border-color:var(--blue)}
 
-  /* HERO */
   .hero{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;
     gap:46px;align-items:center;padding:46px 0 64px}
   .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;
@@ -69,17 +53,20 @@
   .trust span{display:inline-flex;align-items:center;gap:7px}
   .trust svg{width:15px;height:15px;color:var(--green)}
 
-  /* App Store button */
   .store{display:inline-flex;align-items:center;gap:12px;background:#000;
-    border:1px solid #2A2A2A;border-radius:14px;padding:11px 22px;
+    border:1px solid #2A2A2A;border-radius:14px;padding:13px 24px;
+    cursor:pointer;-webkit-tap-highlight-color:rgba(46,155,255,.3);
     transition:transform .15s ease, box-shadow .2s ease}
+  .store:active{transform:scale(.97)}
   .store:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.5)}
   .store svg{width:27px;height:27px;fill:#fff}
-  .store .st{display:flex;flex-direction:column;line-height:1.1}
+  .store .st{display:flex;flex-direction:column;line-height:1.1;text-align:left}
   .store .st small{font-size:.66rem;color:#cfcfcf;font-weight:400}
   .store .st b{font-size:1.18rem;font-weight:600;letter-spacing:.01em}
+  .fallback{display:block;margin-top:12px;font-size:.84rem;color:var(--muted);
+    text-decoration:underline;text-underline-offset:3px}
+  .fallback:hover{color:var(--blue)}
 
-  /* PHONE MOCKUP */
   .phone-stage{display:flex;justify-content:center;position:relative}
   .phone-stage::before{content:"";position:absolute;width:300px;height:300px;
     border-radius:50%;background:radial-gradient(circle,rgba(46,155,255,.22),transparent 60%);
@@ -89,19 +76,17 @@
     box-shadow:0 30px 70px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.05);
     animation:float 6s ease-in-out infinite}
   @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-  .screen{background:#05070B;border-radius:32px;overflow:hidden;
-    border:1px solid #1a2230}
+  .screen{background:#05070B;border-radius:32px;overflow:hidden;border:1px solid #1a2230}
   .statusbar{display:flex;justify-content:space-between;align-items:center;
     padding:14px 22px 6px;font-size:.72rem;color:#cdd6e2;font-weight:500}
   .statusbar .ico{display:flex;gap:5px;align-items:center}
   .statusbar .batt{padding:1px 4px;border:1px solid #46506080;border-radius:3px;font-size:.6rem}
-  .scr-head{display:flex;justify-content:space-between;align-items:center;
-    padding:6px 20px 14px}
+  .scr-head{display:flex;justify-content:space-between;align-items:center;padding:6px 20px 14px}
   .scr-head .t{font-weight:600;font-size:.95rem}
   .scr-head .done{font-size:.78rem;color:var(--blue);
     border:1px solid #1E2A3D;border-radius:999px;padding:3px 11px}
   .scr-icon{width:58px;height:58px;margin:6px auto 12px;border-radius:15px;
-    background:linear-gradient(150deg,#0E1726,#070B12);border:1px solid #1c2troke;
+    background:linear-gradient(150deg,#0E1726,#070B12);
     border:1px solid #1c2638;display:grid;place-items:center}
   .scr-icon svg{width:30px;height:30px;color:var(--blue)}
   .scr-title{text-align:center;font-size:.9rem;font-weight:500;padding:0 30px}
@@ -123,7 +108,6 @@
   .b.red{background:var(--red);color:#fff}
   .b svg{width:16px;height:16px}
 
-  /* SECTIONS */
   section{position:relative;z-index:1}
   .band{border-top:1px solid var(--line);padding:70px 0}
   .sec-ey{font-size:.8rem;letter-spacing:.08em;color:var(--blue);
@@ -131,7 +115,6 @@
   .sec-h{font-size:clamp(1.6rem,3.6vw,2.2rem);font-weight:700;
     letter-spacing:-.01em;margin-bottom:46px;max-width:20ch}
 
-  /* steps */
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   .step{background:var(--surface);border:1px solid var(--line);
     border-radius:var(--radius);padding:26px 24px}
@@ -141,7 +124,6 @@
   .step h3{font-size:1.08rem;font-weight:600;margin-bottom:8px}
   .step p{font-size:.92rem;color:var(--muted)}
 
-  /* features */
   .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   .card{background:linear-gradient(165deg,var(--surface-2),var(--surface));
     border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px}
@@ -154,7 +136,6 @@
   .card h3{font-size:1.1rem;font-weight:600;margin-bottom:9px}
   .card p{font-size:.93rem;color:var(--muted)}
 
-  /* final CTA */
   .final{text-align:center;background:
     radial-gradient(circle at 50% 0%,rgba(46,155,255,.14),transparent 60%);
     padding:84px 22px 90px;border-top:1px solid var(--line)}
@@ -162,7 +143,6 @@
     margin-bottom:14px;letter-spacing:-.01em}
   .final p{color:var(--muted);margin-bottom:30px;font-size:1.05rem}
   .final .store{justify-content:center}
-  .free-line{margin-top:18px;font-size:.88rem;color:var(--muted)}
 
   footer{border-top:1px solid var(--line);padding:30px 0;
     display:flex;justify-content:space-between;align-items:center;
@@ -201,10 +181,11 @@
       <h1>ถึงเวลาโฟกัส<br><span class="hl">แอปกวนใจหายไป</span></h1>
       <p class="sub">เลือกแอปที่อยากซ่อน แล้วซ่อนได้ในแตะเดียว เปิดกลับมาได้ทุกเมื่อที่พร้อม</p>
 
-      <a class="store" id="get" href="https://apps.apple.com/th/app/schoolguard/id6757661338?l=th" target="_blank" rel="noopener">
+      <a class="store js-store" id="get" href="https://apps.apple.com/th/app/schoolguard/id6757661338?l=th">
         <svg viewBox="0 0 24 24"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.45z"/></svg>
         <span class="st"><small>Download on the</small><b>App Store</b></span>
       </a>
+      <a class="fallback js-store" href="https://apps.apple.com/th/app/schoolguard/id6757661338?l=th">ปุ่มไม่ทำงาน? แตะที่นี่เพื่อเปิด App Store</a>
 
       <div class="trust">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>ข้อมูลอยู่บนเครื่อง 100%</span>
@@ -296,11 +277,11 @@
 <section class="final">
   <h2>ให้มือถือเงียบลง<br>ในแตะเดียว</h2>
   <p>เริ่มโฟกัสวันนี้ — ฟรี สำหรับ iPhone</p>
-  <a class="store" href="https://apps.apple.com/th/app/schoolguard/id6757661338?l=th" target="_blank" rel="noopener">
+  <a class="store js-store" href="https://apps.apple.com/th/app/schoolguard/id6757661338?l=th">
     <svg viewBox="0 0 24 24"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.45z"/></svg>
     <span class="st"><small>Download on the</small><b>App Store</b></span>
   </a>
-  <div class="free-line">ใช้งานได้บน iPhone</div>
+  <a class="fallback js-store" href="https://apps.apple.com/th/app/schoolguard/id6757661338?l=th">ปุ่มไม่ทำงาน? แตะที่นี่เพื่อเปิด App Store</a>
 </section>
 
 <div class="wrap">
@@ -314,6 +295,28 @@
     <span>© 2026 · สำหรับ iPhone / iOS</span>
   </footer>
 </div>
+
+<script>
+// FIX: Instagram/Facebook in-app browsers silently drop target="_blank" and window.open().
+// Navigate the current webview directly so iOS can hand off to the App Store app.
+(function () {
+  var APP_STORE_URL = "https://apps.apple.com/th/app/schoolguard/id6757661338?l=th";
+
+  function go(e) {
+    if (e) e.preventDefault();
+    try {
+      window.location.href = APP_STORE_URL;
+    } catch (err) {
+      window.location.assign(APP_STORE_URL);
+    }
+  }
+
+  var links = document.querySelectorAll(".js-store");
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener("click", go);
+  }
+})();
+</script>
 
 </body>
 </html>
